@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Housing Price Prediction</title>
+    <style>
+        body {
+            background-color: rgb(75, 82, 75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: lightblue;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+    <h1>Housing Price Prediction</h1>
+    <form method="post" action="/">
+        <div class="form-group">
+        <label for="property_type">Property Type:</label>
+        <select name="property_type" id="property_type">
+            <option value="Detached">Detached</option>
+            <option value="Semi-Detached">Semi-Detached</option>
+            <option value="Terraced">Terraced</option>
+            <option value="Flats/Maisonettes">Flats/Maisonettes</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+
+        <div class="form-group">
+        <label for="ppd_category">PPD Category Type:</label>
+        <select name="ppd_category" id="ppd_category">
+            <option value="Standard Price Paid">Standard Price Paid</option>
+            <option value="Additional Price Paid">Additional Price Paid</option>
+        </select>
+    </div>
+
+        <div class="form-group">
+        <label for="duration">Duration:</label>
+        <select name="duration" id="duration">
+            <option value="Freehold">Freehold</option>
+            <option value="Leasehold">Leasehold</option>
+        </select>
+    </div>
+
+        <div class="form-group">
+        <label for="month">Month:</label>
+        <input type="text" name="month" id="month">
+    </div>
+
+        <div class="form-group">
+        <label for="Price_Category_City">Price Category City:</label>
+        <select name="Price_Category_City" id="Price_Category_City">
+            <option value="1">Low</option>
+            <option value="2">Medium</option>
+            <option value="3">High</option>
+            <option value="4">Very High</option>
+        </select>
+    </div>
+
+        <div class="form-group">
+        <label for="old_new">Old/New:</label>
+        <select name="old_new" id="old_new">
+            <option value="1">Newly Built</option>
+            <option value="0">Established Residential Building</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Predict">
+    </div>
+    </form>
+
+
+    {% if prediction is not none %}
+        <h2>Prediction:</h2>
+        <p>The predicted housing price is: {{ prediction }}</p>
+    {% endif %}
+</div>
+</body>
+</html>
